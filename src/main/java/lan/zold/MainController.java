@@ -21,16 +21,16 @@ public class MainController {
     private TextField eancodeField;
 
     @FXML
-    private TextField nameField;
+    private TextField d;
 
     @FXML
-    private TextField quantityField;
+    private TextField zField;
 
     @FXML
     void onSaveButton(ActionEvent event) {
         System.out.println("Mentés...");
         //Ellenőrizzük van-e adat
-        if (eancodeField.getText().isEmpty() || nameField.getText().isEmpty() || quantityField.getText().isEmpty()) {
+        if (eancodeField.getText().isEmpty() || d.getText().isEmpty() || zField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba! Kötelező kitölteni a mezőket!");
@@ -48,7 +48,7 @@ public class MainController {
         }
 
         //Ellenőrizzük, hogy a név megfelelő?
-        if(!nameField.getText().matches("[a-zA-ZáéóöőúüűíÁÉÓÖŐÚÜŰÍ]+")) {
+        if(!d.getText().matches("[a-zA-ZáéóöőúüűíÁÉÓÖŐÚÜŰÍ]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba! A nev csak betük lehet!");
@@ -57,19 +57,19 @@ public class MainController {
         }
         
         //Ellenőrizzük, hogy szám?
-        if(!quantityField.getText().matches("\\d+")) {
+        if(!zField.getText().matches("\\d+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba! A mennyiség csak szám lehet!");
             alert.show();
             return;
         }
-
-        StoreTermek product = new StoreTermek();
-        product.be = eancodeField.getText();
-        product.a = nameField.getText();
-        product.zi = Integer.parseInt(quantityField.getText());
-        Save saveData = new Save();
-        saveData.te(product);
+        // Példányosítjuk a terméket
+        StoreTermek pr = new StoreTermek();
+        pr.be = eancodeField.getText();
+        pr.a = d.getText();
+        pr.zi = Integer.parseInt(zField.getText());
+        Save s = new Save();
+        s.te(pr);
     }
 }

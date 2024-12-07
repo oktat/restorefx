@@ -8,7 +8,10 @@
 * Licenc: MIT
 */
 
+// A lan.zold csomag neve. A zold.lan domainnévből:
 package lan.zold;
+
+//Importok jönnek
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,16 +23,22 @@ public class Save {
    * A REST API még menőbb. 
    */
 
+
+  /* Termék tárolása fájlban */ 
   public void te(StoreTermek a) {
     try {
+      /* Az i változó egy példány a FileWriter osztályból */
       FileWriter i = new FileWriter("products.txt", true);
       i.write(a.be);
+      /* Ki kell írni kettőspontot is */
       i.write(":");
       i.write(a.a);
+      /* Ki kell írni kettőspontot is újra*/
       i.write(":");
       i.write(String.valueOf(a.zi));
       i.write("\n");
-      i.close();        
+      //A fájl lezárása jól jöhet
+      i.close();   
     } catch (IOException e) {
       System.err.println("Hiba! A fájl írása sikertelen!");
       System.err.println(e.getMessage());
